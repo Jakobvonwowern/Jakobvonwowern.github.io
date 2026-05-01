@@ -1,0 +1,169 @@
+ {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4fbf4;
+  color: #1f3d2b;
+  line-height: 1.6;
+}
+
+header {
+  background: #d8f3dc;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid #95d5b2;
+}
+
+header h1 {
+  margin: 0 0 10px;
+  color: #1b4332;
+}
+
+nav a {
+  color: #1b4332;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #2d6a4f;
+  text-decoration: underline;
+}
+
+.hero {
+  background: linear-gradient(to right, #d8f3dc, #b7e4c7);
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #081c15;
+}
+
+.hero p {
+  font-size: 18px;
+}
+
+.btn,
+button {
+  display: inline-block;
+  background: #40916c;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover,
+button:hover {
+  background: #2d6a4f;
+}
+
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+section h2 {
+  text-align: center;
+  color: #1b4332;
+  margin-bottom: 30px;
+}
+
+.service {
+  background: white;
+  border-left: 6px solid #95d5b2;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.service h3 {
+  margin-top: 0;
+  color: #2d6a4f;
+}
+
+#about {
+  background: #e9f7ec;
+  border-radius: 12px;
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border: 1px solid #95d5b2;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #40916c;
+}
+
+.error {
+  border-color: #d00000;
+  background: #fff0f0;
+}
+
+.success-message {
+  color: #1b4332;
+  background: #d8f3dc;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+footer {
+  background: #1b4332;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: #d8f3dc;
+}
+
+/* Mobile-friendly design */
+@media (max-width: 600px) {
+  nav a {
+    display: block;
+    margin: 8px 0;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  section {
+    padding: 35px 15px;
+  }
+}
