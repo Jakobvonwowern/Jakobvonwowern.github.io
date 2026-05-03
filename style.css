@@ -1,64 +1,273 @@
-const bookingForm = document.getElementById("bookingForm");
-const formMessage = document.getElementById("formMessage");
-
-bookingForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const nameInput = document.getElementById("name");
-  const emailInput = document.getElementById("email");
-  const serviceSelect = document.getElementById("service");
-  const messageInput = document.getElementById("message");
-
-  clearErrors();
-
-  let isValid = true;
-
-  if (nameInput.value.trim() === "") {
-    showError(nameInput);
-    isValid = false;
-  }
-
-  if (!isValidEmail(emailInput.value.trim())) {
-    showError(emailInput);
-    isValid = false;
-  }
-
-  if (serviceSelect.value === "") {
-    showError(serviceSelect);
-    isValid = false;
-  }
-
-  if (messageInput.value.trim().length > 300) {
-    showError(messageInput);
-    formMessage.textContent = "Message must be under 300 characters.";
-    formMessage.className = "form-message error-text";
-    isValid = false;
-  }
-
-  if (isValid) {
-    formMessage.textContent = "Thank you! Your booking request has been received.";
-    formMessage.className = "form-message success";
-    bookingForm.reset();
-  } else if (formMessage.textContent === "") {
-    formMessage.textContent = "Please fill in all required fields correctly.";
-    formMessage.className = "form-message error-text";
-  }
-});
-
-function showError(field) {
-  field.classList.add("error");
+* {
+  box-sizing: border-box;
 }
 
-function clearErrors() {
-  const fields = bookingForm.querySelectorAll("input, select, textarea");
-
-  fields.forEach(function (field) {
-    field.classList.remove("error");
-  });
-
-  formMessage.textContent = "";
-  formMessage.className = "form-message";
+html {
+  scroll-behavior: smooth;
 }
 
-function isValidEmail(email) {
-  return email.includes("@") && email.includes(".");
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4fbf4;
+  color: #1f3d2b;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.site-header {
+  background: #d8f3dc;
+  border-bottom: 3px solid #95d5b2;
+  padding: 18px 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-header h1 {
+  margin: 0;
+  color: #1b4332;
+}
+
+.main-nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: #1b4332;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.main-nav a:hover {
+  background: #b7e4c7;
+  color: #081c15;
+}
+
+.hero {
+  background: linear-gradient(to right, #d8f3dc, #b7e4c7);
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.hero h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+  color: #081c15;
+}
+
+.hero p {
+  font-size: 19px;
+  margin-bottom: 25px;
+}
+
+.btn,
+button {
+  display: inline-block;
+  background: #40916c;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover,
+button:hover {
+  background: #2d6a4f;
+}
+
+.home-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.home-images img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.section {
+  padding: 55px 0;
+}
+
+.section h2 {
+  text-align: center;
+  color: #1b4332;
+  margin-bottom: 30px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background: white;
+  border-left: 6px solid #95d5b2;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+.service-card h3 {
+  margin-top: 0;
+  color: #2d6a4f;
+}
+
+.form-intro {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 25px;
+}
+
+form {
+  max-width: 550px;
+  margin: auto;
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #1b4332;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #95d5b2;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #40916c;
+}
+
+.error {
+  border-color: #d00000;
+  background: #fff0f0;
+}
+
+.form-message {
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-message.success {
+  color: #1b4332;
+  background: #d8f3dc;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.form-message.error-text {
+  color: #d00000;
+}
+
+.privacy-page {
+  max-width: 850px;
+}
+
+.privacy-page h2 {
+  text-align: left;
+}
+
+.privacy-page h3 {
+  color: #2d6a4f;
+  margin-top: 25px;
+}
+
+.site-footer {
+  background: #1b4332;
+  color: white;
+  text-align: center;
+  padding: 22px;
+  margin-top: 40px;
+}
+
+.site-footer a {
+  color: #d8f3dc;
+}
+
+@media (max-width: 900px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-images {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h2 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 650px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main-nav {
+    justify-content: center;
+    margin-top: 12px;
+    gap: 8px;
+  }
+
+  .main-nav a {
+    display: block;
+  }
+
+  .hero {
+    padding: 65px 15px;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  form {
+    padding: 22px;
+  }
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GreenCare Gardening - Home</title>
+  <title>About - GreenCare Gardening</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
@@ -21,20 +21,16 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h2>Reliable Gardening Services All Year Round</h2>
-        <p>We keep your garden beautiful, clean, and safe in every season.</p>
-        <a class="btn" href="{{ url_for('booking') }}">Request a Booking</a>
-
-        <div class="home-images">
-          <img src="{{ url_for('static', filename='images/garden1.jpg') }}" alt="Beautiful garden" />
-          <img src="{{ url_for('static', filename='images/garden2.jpg') }}" alt="Freshly cut lawn" />
-          <img src="{{ url_for('static', filename='images/garden3.jpg') }}" alt="Gardening tools and plants" />
-        </div>
-      </div>
-    </section>
+  <main class="container section">
+    <h2>About GreenCare</h2>
+    <p>
+      GreenCare Gardening is a local gardening company offering professional outdoor
+      maintenance services throughout the year.
+    </p>
+    <p>
+      Our goal is to make it simple for customers to explore services, request bookings,
+      and keep their outdoor spaces clean, safe, and beautiful.
+    </p>
   </main>
 
   <footer class="site-footer">

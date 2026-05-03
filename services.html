@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services - GreenCare Gardening</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <h1>GreenCare Gardening</h1>
+
+      <nav class="main-nav">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('services') }}">Services</a>
+        <a href="{{ url_for('booking') }}">Request Booking</a>
+        <a href="{{ url_for('privacy') }}">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <h2>Our Services</h2>
+
+    <div class="service-grid">
+      <article class="service-card">
+        <h3>Lawn Mowing</h3>
+        <p>Regular lawn mowing to keep your garden neat, healthy, and attractive.</p>
+      </article>
+
+      <article class="service-card">
+        <h3>Hedge Trimming</h3>
+        <p>Professional trimming to keep hedges clean, shaped, and controlled.</p>
+      </article>
+
+      <article class="service-card">
+        <h3>Snow Shoveling</h3>
+        <p>Reliable snow removal for driveways, paths, and outdoor areas.</p>
+      </article>
+
+      <article class="service-card">
+        <h3>Winter Maintenance</h3>
+        <p>Seasonal outdoor maintenance to keep your property safe during winter.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 GreenCare Gardening Services</p>
+  </footer>
+</body>
+</html>

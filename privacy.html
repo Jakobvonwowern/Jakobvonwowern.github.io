@@ -4,16 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy - GreenCare Gardening</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
   <header class="site-header">
     <div class="container header-content">
       <h1>GreenCare Gardening</h1>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#services">Services</a>
-        <a href="index.html#booking">Booking</a>
+
+      <nav class="main-nav">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('services') }}">Services</a>
+        <a href="{{ url_for('booking') }}">Request Booking</a>
+        <a href="{{ url_for('privacy') }}">Privacy</a>
       </nav>
     </div>
   </header>
@@ -23,7 +26,7 @@
 
     <p>
       This privacy policy explains how GreenCare Gardening collects and uses personal
-      information submitted through the booking/contact form.
+      information submitted through the booking form.
     </p>
 
     <h3>What data we collect</h3>
@@ -40,22 +43,13 @@
 
     <h3>How the data is stored</h3>
     <p>
-      In the current frontend version, the form validates your input but does not store
-      the data permanently. In a later backend version, booking requests may be stored
-      in an SQL database.
-    </p>
-
-    <h3>Data minimization</h3>
-    <p>
-      We only ask for information that is necessary to process a booking request.
+      Booking information may be stored in a MariaDB database as part of the backend system.
     </p>
 
     <h3>Your rights</h3>
     <p>
-      You may request access to your information or ask for it to be deleted.
+      You may request access to your information or ask for your information to be deleted.
     </p>
-
-    <a class="btn" href="index.html">Back to Home</a>
   </main>
 
   <footer class="site-footer">

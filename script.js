@@ -1,39 +1,52 @@
 const bookingForm = document.getElementById("bookingForm");
+const formMessage = document.getElementById("formMessage");
 
-bookingForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+if (bookingForm) {
+  bookingForm.addEventListener("submit", function (event) {
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const serviceSelect = document.getElementById("service");
+    const messageInput = document.getElementById("message");
 
-  const nameInput = bookingForm.querySelector('input[type="text"]');
-  const emailInput = bookingForm.querySelector('input[type="email"]');
-  const serviceSelect = bookingForm.querySelector("select");
+    clearErrors();
 
-  clearErrors();
+    let isValid = true;
 
-  let isValid = true;
+    if (nameInput.value.trim() === "") {
+      showError(nameInput);
+      isValid = false;
+    }
 
-  if (nameInput.value.trim() === "") {
-    showError(nameInput);
-    isValid = false;
-  }
+    if (!isValidEmail(emailInput.value.trim())) {
+      showError(emailInput);
+      isValid = false;
+    }
 
-  if (emailInput.value.trim() === "" || !emailInput.value.includes("@")) {
-    showError(emailInput);
-    isValid = false;
-  }
+    if (serviceSelect.value === "") {
+      showError(serviceSelect);
+      isValid = false;
+    }
 
-  if (serviceSelect.value === "") {
-    showError(serviceSelect);
-    isValid = false;
-  }
+    if (messageInput.value.trim().length > 300) {
+      showError(messageInput);
+      formMessage.textContent = "Message must be under 300 characters.";
+      formMessage.className = "form-message error-text";
+      isValid = false;
+    }
 
-  if (isValid) {
-    showSuccessMessage();
-    bookingForm.reset();
-  }
-});
+    if (!isValid) {
+      event.preventDefault();
 
-function showError(input) {
-  input.classList.add("error");
+      if (formMessage.textContent === "") {
+        formMessage.textContent = "Please fill in all required fields correctly.";
+        formMessage.className = "form-message error-text";
+      }
+    }
+  });
+}
+
+function showError(field) {
+  field.classList.add("error");
 }
 
 function clearErrors() {
@@ -43,17 +56,10 @@ function clearErrors() {
     field.classList.remove("error");
   });
 
-  const oldMessage = document.querySelector(".success-message");
-
-  if (oldMessage) {
-    oldMessage.remove();
-  }
+  formMessage.textContent = "";
+  formMessage.className = "form-message";
 }
 
-function showSuccessMessage() {
-  const message = document.createElement("p");
-  message.className = "success-message";
-  message.textContent = "Thank you! Your booking request has been received.";
-
-  bookingForm.appendChild(message);
+function isValidEmail(email) {
+  return email.includes("@") && email.includes(".");
 }
